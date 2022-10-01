@@ -1,29 +1,50 @@
-
-const peripheral = require('../model/peripheralModel');
+const Peripheral = require('../model/peripheralModel');
 
 module.exports = {
 // Display list of all Peripheral.
-    getPeripheral: (req, res) => {
-        res.send("NOT IMPLEMENTED: Peripheral list");
+    getPeripheral: async (req, res) => {
+        try {
+            const peripheralList = await Peripheral.get();
+            res.json(peripheralList);
+        } catch (e) {
+            console.error(e);
+            res.status(500).json({
+                status: 'error',
+                message: e.message
+            });
+        }
     },
 
 // Add a new Peripheral.
-    newPeripheral: (req, res) => {
-        res.send(`NOT IMPLEMENTED: new Peripheral:`);
+    newPeripheral: async (req, res) => {
+        try {
+            const peripheral = JSON.parse(req.body)
+            if (!peripheral.uid || !peripheral.vendor || !peripheral.isOnline) {
+                throw Error('Invalid Data')
+            }
+
+            const newPeripheral = new Peripheral(peripheral);
+            res.send(await newPeripheral.save());
+        } catch (e) {
+            res.status(500).json({
+                status: 'error',
+                message: e.message
+            });
+        }
     },
 
 // Display Peripheral create form on GET.
-     viewPeripheral: (req, res) => {
+    viewPeripheral: (req, res) => {
         res.send(`NOT IMPLEMENTED: Peripheral detail: ${req.params.id}`);
     },
 
 // Handle Peripheral update.
-     updatePeripheral: (req, res) => {
+    updatePeripheral: (req, res) => {
         res.send("NOT IMPLEMENTED: Peripheral update PUT");
     },
 
 // Delete Peripheral.
-     deletePeripheral: (req, res) => {
+    deletePeripheral: (req, res) => {
         res.send("NOT IMPLEMENTED: Peripheral delete DELETE");
     },
 }

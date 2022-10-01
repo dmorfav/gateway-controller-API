@@ -9,10 +9,10 @@ const {
 } = require('../controller/PeripheralController')
 
 router.get('/', getPeripheral);
-router.post('/peripheral/create', newPeripheral);
-router.get('/peripheral/:id/view', viewPeripheral)
-router.patch('/peripheral/update', updatePeripheral)
-router.delete('/peripheral/delete', deletePeripheral);
+router.post('/create', newPeripheral);
+router.get('/view', viewPeripheral)
+router.patch('/update', updatePeripheral)
+router.delete('/delete', deletePeripheral);
 
 
 module.exports = router;

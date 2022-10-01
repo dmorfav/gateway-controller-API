@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 // Setup schema
-const peripheralSchema = mongoose.Schema({
+const peripheralSchema = Schema({
     uid: {
         type: String,
-        required: true
+        required: true,
     },
     vendor: {
         type: String,
@@ -12,12 +13,15 @@ const peripheralSchema = mongoose.Schema({
     isOnline: Boolean,
 
     dateCreated: {
-        type: Date,
-        default: Date.now
+        type: Number,
+        default: Date.now()
     }
 });
-// Export IPeripheral model
-const peripheral = module.exports = mongoose.model('peripheral', peripheralSchema);
-module.exports.get = function (callback, limit) {
-    peripheral.find(callback).limit(limit);
+// Export Peripheral model
+const peripheral = module.exports = mongoose.model('Peripheral', peripheralSchema);
+
+module.exports = {
+    get: (limit = 100) => {
+        return peripheral.find({}).limit(limit);
+    }
 }

@@ -9,10 +9,10 @@ const {
 } = require('../controller/gatewayController')
 
 router.get('/', getGateway);
-router.post('/gateway/create', newGateway);
-router.get('/gateway/:gt_id/view', viewGateway)
-router.patch('/gateway/update', updateGateway)
-router.delete('/gateway/delete', deleteGateway);
+router.post('/create', newGateway);
+router.get('/view', viewGateway)
+router.patch('/update', updateGateway)
+router.delete('/delete', deleteGateway);
 
 
 module.exports = router;

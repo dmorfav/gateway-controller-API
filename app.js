@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose   = require('mongoose');
 const bodyParser = require('body-parser');
+const { useTreblle } = require("treblle");
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -13,11 +14,17 @@ const peripheralRouter = require('./routes/peripheral');
 
 const app = express();
 
+useTreblle(app, {
+  apiKey: "T7522loOP9HNuuIg3HQQpkIEolWCiOEL",
+  projectId: "BoHb5Pw2htI317xo",
+  showErrors: true
+});
+
 // Configure bodyparser to handle post requests
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.raw({inflate:true, limit: '100kb', type: 'application/json'}));
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect("mongodb://localhost:27017/restApiDBMusala", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/GatewayController", {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 
 // view engine setup

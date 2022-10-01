@@ -1,7 +1,8 @@
 {
-  "name": "musalaapi",
+  "name": "gateway-controller",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -13,6 +14,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^6.6.0",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "treblle": "^1.2.1"
   }
 }

@@ -19,7 +19,4 @@ const gatewaySchema = mongoose.Schema({
     }
 });
 // Export IGateway model
-const GatewayModel = module.exports = mongoose.model('gateway', gatewaySchema);
-module.exports.get = function (callback, limit) {
-    GatewayModel.find(callback).limit(limit);
-}
+module.exports = mongoose.model('Gateway', gatewaySchema);
