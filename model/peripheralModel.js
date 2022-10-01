@@ -18,10 +18,34 @@ const peripheralSchema = Schema({
     }
 });
 // Export Peripheral model
-const peripheral = module.exports = mongoose.model('Peripheral', peripheralSchema);
+const Peripheral = mongoose.model('Peripheral', peripheralSchema);
 
 module.exports = {
-    get: (limit = 100) => {
-        return peripheral.find({}).limit(limit);
+    getAll: (limit = 100) => {
+        return Peripheral.find({}).limit(limit);
+    },
+
+    getByUid: (id = null) => {
+        return Peripheral.find({uid: {$eq: id}}).limit(1);
+    },
+
+    create: async ( uid, vendor, isOnline) => {
+        const newPeripheral = new Peripheral({
+            uid,
+            vendor,
+            isOnline
+        });
+        return newPeripheral.save();
+    },
+
+    update: async ( uid, vendor, isOnline) => {
+        return Peripheral.updateOne(
+            {uid: {$eq: uid}},
+            {$set: {vendor, isOnline}}
+        );
+    },
+
+    delete: (id) => {
+        return Peripheral.deleteOne({uid: {$eq: id}});
     }
 }
