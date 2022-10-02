@@ -21,3 +21,9 @@ The service must also offer an operation for displaying information about all st
   - vendor (string),
   - date created,
   - status - online/offline.
+
+## Deploy
+1. Clone code
+2. run `yarn install`
+3. Optional you cant pass the arguments `MONGODB_URI` and `PORT` for custom database and service port
+4. run `node bin/www`
