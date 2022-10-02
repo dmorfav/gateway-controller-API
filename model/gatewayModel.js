@@ -19,4 +19,42 @@ const gatewaySchema = mongoose.Schema({
     }
 });
 // Export IGateway model
-module.exports = mongoose.model('Gateway', gatewaySchema);
+const Gateway = mongoose.model('Gateway', gatewaySchema);
+
+
+module.exports = {
+    getAll: (limit = 100) => {
+        return Gateway.find({}).limit(limit);
+    },
+
+    getByUid: (id = null) => {
+        return Gateway.find({uid: {$eq: id}}).limit(1);
+    },
+
+    create: async (uid, name, ipv4, peripheral) => {
+        const newGateway = new Gateway({
+            uid,
+            name,
+            ipv4,
+            peripheral
+        });
+        return newGateway.save();
+    },
+
+    update: async (uid, name, ipv4, peripheral) => {
+        return Gateway.updateOne(
+            {uid: {$eq: uid}},
+            {
+                $set: {name, ipv4},
+                $push: {
+                    peripheral:
+                        {$each: peripheral}
+                }
+            }
+        );
+    },
+
+    delete: (id) => {
+        return Gateway.deleteOne({uid: {$eq: id}});
+    }
+}
