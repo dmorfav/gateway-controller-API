@@ -56,5 +56,9 @@ module.exports = {
 
     delete: (id) => {
         return Gateway.deleteOne({uid: {$eq: id}});
+    },
+
+    deletePeripheral: (gatewayId, peripheralId) => {
+        return Gateway.updateOne({uid: {$eq: gatewayId}}, {$pull: {peripheral: peripheralId}});
     }
 }

@@ -96,4 +96,23 @@ module.exports = {
             });
         }
     },
+
+    deletePeripheralInGateway: async (req, res) => {
+        try {
+            if (req.query?.gateway_id == null || req.query?.peripheral_id == null) {
+                throw Error('Must send the uid for gateway and peripheral')
+            }
+            const deleteResp = await GatewayModel.deletePeripheral(req.query?.gateway_id, req.query?.peripheral_id);
+
+            if (deleteResp?.deletedCount === 0) {
+                throw Error('We can\'t delete a element that not exist ')
+            }
+            res.json(deleteResp);
+        } catch (e) {
+            res.status(500).json({
+                status: 'error',
+                message: e.message
+            });
+        }
+    },
 }

@@ -4,13 +4,15 @@ const {
     getGateway,
     newGateway,
     updateGateway,
-    deleteGateway
+    deleteGateway,
+    deletePeripheralInGateway
 } = require('../controller/gatewayController')
 
 router.get('/', getGateway);
 router.post('/create', newGateway);
 router.put('/update', updateGateway);
 router.delete('/delete', deleteGateway);
+router.delete('/delete/peripheral', deletePeripheralInGateway);
 
 
 module.exports = router;
