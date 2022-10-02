@@ -4,7 +4,7 @@
 
 [Postman](https://postman.com/lab-dmorfav/workspace/gatewaycontroller/documentation/6343559-73391276-8ab7-44da-b9cc-c0818b22e6e1)
 
-### Description
+## Description
 
 This sample project is managing gateways - master devices that control multiple peripheral devices. 
 Your task is to create a REST service (JSON/HTTP) for storing information about these gateways and their associated devices. This information must be stored in the database. 
