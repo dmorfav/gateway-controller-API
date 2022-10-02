@@ -6,7 +6,7 @@ const {
     updateGateway,
     deleteGateway,
     deletePeripheralInGateway
-} = require('../controller/gatewayController')
+} = require('controller/gatewayController')
 
 router.get('/', getGateway);
 router.post('/create', newGateway);

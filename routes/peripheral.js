@@ -5,7 +5,7 @@ const {
     newPeripheral,
     updatePeripheral,
     deletePeripheral
-} = require('../controller/PeripheralController')
+} = require('controller/PeripheralController')
 
 router.get('/', getPeripheral);
 router.post('/create', newPeripheral);
