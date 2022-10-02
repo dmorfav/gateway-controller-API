@@ -4,6 +4,7 @@
   "private": true,
   "author": "dmorfav@gmail.com",
   "license": "MIT",
+  "main": "app.js",
   "keywords": [
     "express",
     "mongose",
