@@ -5,6 +5,7 @@
   "author": "dmorfav@gmail.com",
   "license": "MIT",
   "main": "app.js",
+  "type": "commonjs",
   "keywords": [
     "express",
     "mongose",
