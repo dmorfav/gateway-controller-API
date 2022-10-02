@@ -2,7 +2,14 @@
   "name": "gateway-controller",
   "version": "1.0.0",
   "private": true,
+  "author": "dmorfav@gmail.com",
   "license": "MIT",
+  "keywords": [
+    "express",
+    "mongose",
+    "mongodb",
+    "heroku"
+  ],
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -17,5 +24,8 @@
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
     "treblle": "^1.2.1"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
