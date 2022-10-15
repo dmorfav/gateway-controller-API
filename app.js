@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const cors = require('cors')
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -14,6 +15,7 @@ const peripheralRouter = require('./routes/peripheral');
 require('dotenv').config();
 
 const app = express();
+app.use(cors())
 
 useTreblle(app, {
   apiKey: "T7522loOP9HNuuIg3HQQpkIEolWCiOEL",
