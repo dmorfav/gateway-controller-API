@@ -45,11 +45,7 @@ module.exports = {
         return Gateway.updateOne(
             {uid: {$eq: uid}},
             {
-                $set: {name, ipv4},
-                $push: {
-                    peripheral:
-                        {$each: peripheral}
-                }
+                $set: {name, ipv4, peripheral},
             }
         );
     },
